@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanax Software Solutions | Enterprise IT Consulting & Support</title>
+    <style>
+        :root {
+            --primary: #0f2a6e;
+            --primary-dark: #07153b;
+            --secondary: #d4af37;
+            --secondary-hover: #b89528;
+            --accent-blue: #2563eb;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .top-bar-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, var(--secondary) 0%, var(--primary) 100%);
+            border: 2px solid var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: #ffffff;
+            padding: 6rem 5% 5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .msme-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: #cbd5e1;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--primary-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-hover);
+        }
+
+        .btn-outline {
+            border: 2px solid #ffffff;
+            color: #ffffff;
+        }
+
+        .btn-outline:hover {
+            background-color: #ffffff;
+            color: var(--primary);
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.35rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .service-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            background-color: #eff6ff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        /* Credentials Box */
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .cred-item h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .cred-item p {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Case Study / Project Highlight */
+        .case-study {
+            background: linear-gradient(to right, #0f2a6e, #1e3a8a);
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 3rem;
+            margin-top: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        @media(max-width: 768px) {
+            .case-study { grid-template-columns: 1fr; }
+        }
+
+        .case-study h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .case-study p {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .case-metrics {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .case-metrics ul {
+            list-style: none;
+        }
+
+        .case-metrics li {
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        /* Contact & Office Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-col h3 {
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+            font-size: 1.15rem;
+        }
+
+        .footer-col p {
+            color: #94a3b8;
+            font-size: 0.92rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="top-bar-info">
+            <span>📍 Varanasi, Uttar Pradesh, India</span>
+            <span>📜 MSME Udyam No: UDYAM-UP-75-0207728</span>
+        </div>
+        <div>
+            <span>✉️ ankita4human@gmail.com</span>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav>
+        <div class="logo">
+            <div class="logo-icon"><img src="logo.jpeg" height="40px"  width="40px"/></div>
+            KANAX <span>SOFTWARE SOLUTIONS</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#credentials">MSME Verification</a></li>
+            <li><a href="#case-study">Global Engagement</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="msme-badge">Government of India Recognized Micro Enterprise</div>
+        <h1>Enterprise <span>IT Consultancy</span> & Production Support</h1>
+        <p>Specialized software engineering, technical maintenance, and dedicated production support for international and domestic enterprise clients.</p>
+        <div class="btn-group">
+            <a href="#services" class="btn btn-primary">Explore Services</a>
+            <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Content Container -->
+    <div class="container">
+
+        <!-- Services Section -->
+        <section id="services">
+            <div class="section-header">
+                <h2>Our Service Portfolio</h2>
+                <p>High-reliability technology services designed for mission-critical software ecosystems.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Software Maintenance & Production Support</h3>
+                    <p>Dedicated technical assistance, system monitoring, issue resolution, and operational maintenance for proprietary management systems.</p>
+                    <span class="service-tag">NIC Code: 62013</span>
+                </div>
+                <div class="service-card">
+                    <h3>IT Consultancy & Strategy</h3>
+                    <p>Professional IT architecture advice, technology planning, compliance adherence, and international workflow optimization.</p>
+                    <span class="service-tag">NIC Code: 6201</span>
+                </div>
+                <div class="service-card">
+                    <h3>Custom Software Development</h3>
+                    <p>Tailored computer programming, routine system enhancements, bug fixes, and continuous software integration.</p>
+                    <span class="service-tag">NIC Code: 62</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- MSME Credentials Section -->
+        <section id="credentials" style="margin-top: 5rem;">
+            <div class="section-header">
+                <h2>Government Registration Credentials</h2>
+                <p>Official registration details issued by the Ministry of Micro, Small and Medium Enterprises (MSME).</p>
+            </div>
+            <div class="credentials-grid">
+                <div class="cred-item">
+                    <h4>Enterprise Name</h4>
+                    <p>Kanax Software Solutions</p>
+                </div>
+                <div class="cred-item">
+                    <h4>Udyam Registration No.</h4>
+                    <p>UDYAM-UP-75-0207728</p>
+                </div>
+                <div class="cred-item">
+                    <h4>Enterprise Type</h4>
+                    <p>Micro Enterprise (Services)</p>
+                </div>
+                <div class="cred-item">
+                    <h4>Primary Activity</h4>
+                    <p>Computer Programming & Maintenance</p>
+                </div>
+                <div class="cred-item">
+                    <h4>Incorporation Date</h4>
+                    <p>October 1, 2026</p>
+                </div>
+                <div class="cred-item">
+                    <h4>Registration Location</h4>
+                    <p>Varanasi, Uttar Pradesh, India</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Study Section -->
+        <section id="case-study">
+            <div class="case-study">
+                <div>
+                    <h3>International Consulting Partnership</h3>
+                    <p>Kanax Software Solutions serves as a trusted IT consultancy provider for <strong>International Client</strong>, delivering specialized production support and development for the <em>integriertes Managementsystem MS LDS</em>.</p>
+                    <a href="#contact" class="btn btn-primary">Partner With Us</a>
+                </div>
+                <div class="case-metrics">
+                    <h4>Contract Highlights:</h4>
+                    <ul>
+                        <li>✓ <strong>Client:</strong> international Client</li>
+                        <li>✓ <strong>Scope:</strong>Production Support & Development</li>
+                        <li>✓ <strong>Billing Model:</strong> Monthly Invoicing</li>
+                        <li>✓ <strong>Governing Framework:</strong> Master IT Consulting Agreement</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer & Contact -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Kanax Software Solutions</h3>
+                <p>Delivering high-performance IT consultancy, custom software programming, and enterprise software maintenance.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Registered Office Address</h3>
+                <p>Ward No. 3, Indrapuri Colony,</p>
+                <p>Shivdashpur-Manduadih, Near Mahatma Gandhi School,</p>
+                <p>Varanasi, Uttar Pradesh - 221004, India</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contact & Management</h3>
+                <p><strong>Proprietor:</strong> Ankita Srivastava</p>
+                <p><strong>Email:</strong> ankita4human@gmail.com</p>
+                <p><strong>Mobile:</strong> +91 7651826682</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Kanax Software Solutions. All Rights Reserved. | Government of India MSME Registered Unit
+        </div>
+    </footer>
+
+</body>
+</html>
